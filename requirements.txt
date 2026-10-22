@@ -1,25 +1,25 @@
-# Adaptive Technical Viva & Oral Screener
+# Adaptive Technical Viva & Oral Screener - Core Backend Requirements
 
-# --- Frontend ---
-streamlit>=1.40.0          # st.audio_input for mic recording
-pandas>=2.0.0              # final report tables
-
-# --- Backend ---
+# --- Web Framework & Server ---
 fastapi>=0.110.0
 uvicorn[standard]>=0.29.0
-pydantic>=2.5.0
-python-multipart>=0.0.9    # audio file uploads to FastAPI
-httpx>=0.27.0              # Streamlit -> FastAPI calls
 
-# --- Speech-to-text (local) ---
-faster-whisper>=1.0.0
+# --- Configuration & Data Validation ---
+pydantic>=2.7.0
+pydantic-settings>=2.0.0
+python-dotenv>=1.0.0
 
-# --- LLM evaluation ---
-groq>=0.9.0
+# --- Database (PyMongo with Asynchronous API) ---
+pymongo>=4.9.0
 
-# --- Config ---
-python-dotenv>=1.0.0       # load GROQ_API_KEY from .env
+# --- Testing & HTTP Client ---
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+httpx>=0.27.0
 
-# --- Database (step 8, install later) ---
-# sqlalchemy>=2.0.0
-# psycopg2-binary>=2.9.9
+# --- Future Phases (Uncomment when implementing AI Evaluation & Frontend) ---
+# streamlit>=1.40.0
+# pandas>=2.0.0
+# python-multipart>=0.0.9
+# faster-whisper>=1.0.0
+# groq>=0.9.0

@@ -1,0 +1,231 @@
+[
+  {
+    "question_id": "OS001",
+    "subject": "OS",
+    "topic": "Deadlocks",
+    "difficulty": "easy",
+    "question": "What is a deadlock in an operating system, and what are the four Coffman conditions necessary for it to occur?",
+    "reference_answer": "A deadlock is a situation where a set of processes are blocked because each process is holding a resource and waiting for another resource held by another process in the same set. The four necessary Coffman conditions are: 1. Mutual Exclusion (non-shareable resources), 2. Hold and Wait (processes holding resources while requesting new ones), 3. No Preemption (resources cannot be forcibly taken away), and 4. Circular Wait (a circular chain of processes exists where each process waits for a resource held by the next).",
+    "key_concepts": [
+      "Mutual exclusion",
+      "Hold and wait",
+      "No preemption",
+      "Circular wait",
+      "Resource allocation"
+    ],
+    "tags": ["deadlocks", "concurrency", "process_synchronization"]
+  },
+  {
+    "question_id": "OS002",
+    "subject": "OS",
+    "topic": "Deadlocks",
+    "difficulty": "medium",
+    "question": "Explain Banker's Algorithm. How does it determine if a system state is safe or unsafe?",
+    "reference_answer": "Banker's Algorithm is a deadlock avoidance algorithm developed by Edsger Dijkstra for resource allocation. It tests for safety by simulating the allocation of predetermined maximum possible amounts of all resources, and then runs a safety algorithm to check if there exists an execution sequence (safe sequence) where every process can satisfy its maximum demand and terminate without causing a deadlock. If such a sequence exists, the state is safe and requests are granted; otherwise, the requesting process must wait.",
+    "key_concepts": [
+      "Deadlock avoidance",
+      "Safe state",
+      "Safe sequence",
+      "Maximum claim",
+      "Available resources matrix",
+      "Need matrix"
+    ],
+    "tags": ["deadlocks", "bankers_algorithm", "resource_allocation"]
+  },
+  {
+    "question_id": "OS003",
+    "subject": "OS",
+    "topic": "Deadlocks",
+    "difficulty": "hard",
+    "question": "Compare Deadlock Prevention, Deadlock Avoidance, and Deadlock Detection and Recovery. What are the performance trade-offs of each strategy?",
+    "reference_answer": "Deadlock Prevention eliminates deadlock by constraining resource requests to invalidate at least one of the four Coffman conditions (e.g., ordering resource acquisition to prevent circular wait), which is conservative and often leads to low device utilization. Deadlock Avoidance dynamically inspects resource allocation state using algorithms like Banker's Algorithm to guarantee that a circular wait will never occur; it requires advance knowledge of maximum resource claims and incurs runtime computation overhead. Deadlock Detection and Recovery allows deadlocks to occur, periodically invokes a cycle-detection algorithm on the Resource Allocation Graph (or wait-for graph), and recovers via process termination or resource preemption with rollback, offering higher concurrency but risking costly rollbacks and starvation.",
+    "key_concepts": [
+      "Invalidating Coffman conditions",
+      "Resource allocation graph",
+      "Runtime overhead vs resource utilization",
+      "Process termination",
+      "Resource preemption and rollback",
+      "Starvation prevention"
+    ],
+    "tags": ["deadlocks", "strategies", "performance_tradeoffs"]
+  },
+  {
+    "question_id": "OS004",
+    "subject": "OS",
+    "topic": "Virtual Memory",
+    "difficulty": "easy",
+    "question": "What is paging, and how does the Memory Management Unit (MMU) translate a logical address to a physical address?",
+    "reference_answer": "Paging is a memory management scheme that eliminates the need for contiguous allocation of physical memory. The logical address space is divided into fixed-size blocks called pages, and physical memory is divided into blocks of the same size called frames. The MMU hardware uses a Page Table: the logical address is split into a page number and an offset. The page number indexes into the page table to find the base physical frame number, which is concatenated with the offset to produce the physical address in RAM.",
+    "key_concepts": [
+      "Pages and page frames",
+      "Logical vs physical address",
+      "Page table",
+      "Offset",
+      "Memory Management Unit (MMU)"
+    ],
+    "tags": ["memory_management", "paging", "mmu"]
+  },
+  {
+    "question_id": "OS005",
+    "subject": "OS",
+    "topic": "Virtual Memory",
+    "difficulty": "medium",
+    "question": "What is a Translation Lookaside Buffer (TLB), and what is TLB thrashing?",
+    "reference_answer": "A Translation Lookaside Buffer (TLB) is a fast, hardware associative cache located inside or near the MMU that stores recent virtual-to-physical address translations to avoid repetitive memory lookups for the page table. When an address is referenced, the TLB is checked first (TLB hit); if absent (TLB miss), the page table is walked in memory and the TLB is updated. TLB thrashing occurs when the working set of memory pages accessed by active processes exceeds the TLB capacity, causing frequent TLB misses and severe CPU performance degradation as the processor repeatedly walks multi-level page tables in slower main memory.",
+    "key_concepts": [
+      "Associative hardware cache",
+      "TLB hit and miss",
+      "Effective memory access time",
+      "Working set size",
+      "Page table walking"
+    ],
+    "tags": ["memory_management", "tlb", "caching"]
+  },
+  {
+    "question_id": "OS006",
+    "subject": "OS",
+    "topic": "Process Synchronization",
+    "difficulty": "medium",
+    "question": "What is the Critical Section Problem, and what requirements must any valid synchronization solution satisfy?",
+    "reference_answer": "The Critical Section Problem refers to designing a protocol that concurrent processes can use to cooperate when accessing shared resources or variables, ensuring data consistency. Any valid solution must satisfy three criteria: 1. Mutual Exclusion (if process P is executing in its critical section, no other process may be executing in its critical section), 2. Progress (if no process is in its critical section and some wish to enter, selection cannot be postponed indefinitely), and 3. Bounded Waiting (a bound must exist on the number of times other processes are allowed to enter their critical sections after a process has made a request).",
+    "key_concepts": [
+      "Mutual exclusion",
+      "Progress",
+      "Bounded waiting",
+      "Shared resource race condition",
+      "Atomic operations"
+    ],
+    "tags": ["process_synchronization", "concurrency", "critical_section"]
+  },
+  {
+    "question_id": "DBMS001",
+    "subject": "DBMS",
+    "topic": "Transactions",
+    "difficulty": "easy",
+    "question": "Explain the ACID properties of a database transaction with a brief example for each.",
+    "reference_answer": "ACID properties ensure reliable processing of database transactions: 1. Atomicity: All operations in a transaction succeed completely or none do (e.g., in a fund transfer, debiting account A and crediting account B must both happen or rollback). 2. Consistency: A transaction transforms the database from one valid state to another, satisfying all schema constraints and invariants. 3. Isolation: Intermediate transaction states are invisible to concurrently executing transactions. 4. Durability: Once a transaction commits, its modifications are permanently recorded in non-volatile storage, even in the event of a system crash.",
+    "key_concepts": [
+      "Atomicity (all-or-nothing)",
+      "Consistency (valid state preservation)",
+      "Isolation (concurrency control)",
+      "Durability (crash persistence)",
+      "Commit and rollback"
+    ],
+    "tags": ["transactions", "acid", "relational_db"]
+  },
+  {
+    "question_id": "DBMS002",
+    "subject": "DBMS",
+    "topic": "Transactions",
+    "difficulty": "medium",
+    "question": "What are the standard SQL Transaction Isolation Levels, and what concurrency anomalies does each prevent?",
+    "reference_answer": "The four SQL isolation levels defined by ANSI/ISO are: 1. Read Uncommitted: Allows dirty reads, non-repeatable reads, and phantom reads. 2. Read Committed: Prevents dirty reads by reading only committed data, but permits non-repeatable reads and phantoms. 3. Repeatable Read: Prevents dirty reads and non-repeatable reads by holding read locks until transaction completion, but may permit phantom rows in standard locking implementations. 4. Serializable: The highest isolation level, completely prevents dirty reads, non-repeatable reads, and phantom reads by enforcing strict serial equivalence using two-phase locking, predicate locks, or snapshot serializable isolation.",
+    "key_concepts": [
+      "Read Uncommitted",
+      "Read Committed",
+      "Repeatable Read",
+      "Serializable",
+      "Dirty read",
+      "Non-repeatable read",
+      "Phantom read"
+    ],
+    "tags": ["transactions", "isolation_levels", "concurrency"]
+  },
+  {
+    "question_id": "DBMS003",
+    "subject": "DBMS",
+    "topic": "Indexing",
+    "difficulty": "medium",
+    "question": "How does a B+ Tree index work, and why is it preferred over a binary search tree or standard B-tree for disk-based relational databases?",
+    "reference_answer": "A B+ Tree is a self-balancing N-ary tree data structure optimized for block storage. In a B+ Tree, internal nodes store only routing keys and child pointers, while all actual data records or record pointers reside exclusively in the leaf nodes. Furthermore, leaf nodes are linked sequentially in a doubly-linked list. B+ Trees are preferred over binary search trees and standard B-trees because: 1. High fanout drastically reduces tree height (typically 3-4 levels for millions of rows), minimizing disk I/O seeks. 2. Internal nodes fit more keys into a single disk block page cache. 3. Sequential leaf chaining enables extremely fast range queries without requiring in-order tree traversals.",
+    "key_concepts": [
+      "B+ Tree structure",
+      "Leaf node chaining (linked list)",
+      "High fanout and low tree height",
+      "Disk I/O block optimization",
+      "Range scan efficiency"
+    ],
+    "tags": ["indexing", "b_plus_tree", "storage_engine"]
+  },
+  {
+    "question_id": "DBMS004",
+    "subject": "DBMS",
+    "topic": "Normalization",
+    "difficulty": "medium",
+    "question": "Differentiate between Third Normal Form (3NF) and Boyce-Codd Normal Form (BCNF). Give an example of a schema that is in 3NF but not in BCNF.",
+    "reference_answer": "A relation is in 3NF if for every functional dependency X -> Y, either X is a superkey or Y is a prime attribute (part of any candidate key). BCNF is stricter: for every non-trivial functional dependency X -> Y, X must strictly be a superkey. Thus, 3NF relaxes BCNF by allowing Y to be a prime attribute when X is not a superkey. An example schema in 3NF but not BCNF is Student_Course_Advisor (StudentID, Course, Advisor), where (StudentID, Course) is a candidate key, each student has one advisor per course, but each advisor advises only one course (Advisor -> Course). Here Advisor is not a superkey, but Course is a prime attribute, satisfying 3NF but violating BCNF.",
+    "key_concepts": [
+      "Functional dependency",
+      "Superkey requirement in BCNF",
+      "Prime attribute relaxation in 3NF",
+      "Transitive dependency elimination",
+      "Lossless join and dependency preservation"
+    ],
+    "tags": ["normalization", "3nf", "bcnf", "database_design"]
+  },
+  {
+    "question_id": "CN001",
+    "subject": "CN",
+    "topic": "Transport Layer",
+    "difficulty": "easy",
+    "question": "Explain the TCP Three-Way Handshake process for establishing a reliable connection.",
+    "reference_answer": "The TCP Three-Way Handshake establishes a reliable, full-duplex transmission control protocol connection: 1. SYN: The client generates an Initial Sequence Number (ISN_c) and sends a SYN packet to the server requesting synchronization. 2. SYN-ACK: The server responds with a packet having both SYN and ACK flags set, acknowledging the client's sequence number (ACK = ISN_c + 1) and providing its own Initial Sequence Number (ISN_s). 3. ACK: The client sends an ACK packet acknowledging the server's sequence number (ACK = ISN_s + 1). Once this packet is received, both sides transition to the ESTABLISHED state and data exchange begins.",
+    "key_concepts": [
+      "SYN packet and Initial Sequence Number (ISN)",
+      "SYN-ACK response",
+      "ACK confirmation",
+      "Full-duplex sequence synchronization",
+      "ESTABLISHED state transition"
+    ],
+    "tags": ["transport_layer", "tcp", "handshake"]
+  },
+  {
+    "question_id": "CN002",
+    "subject": "CN",
+    "topic": "Transport Layer",
+    "difficulty": "medium",
+    "question": "How do TCP Flow Control and TCP Congestion Control differ, and what mechanisms implement each?",
+    "reference_answer": "TCP Flow Control prevents the sender from overwhelming the receiver's memory buffer, whereas TCP Congestion Control prevents the sender from overwhelming the intermediate network routers and communication links. Flow control is end-to-end and implemented via the Sliding Window protocol using the Receive Window (rwnd) advertised in the TCP header by the receiver. Congestion control is network-wide and implemented by the sender maintaining a Congestion Window (cwnd) using algorithms such as Slow Start (exponential window growth), Congestion Avoidance (additive increase/multiplicative decrease - AIMD), Fast Retransmit, and Fast Recovery.",
+    "key_concepts": [
+      "Flow control vs congestion control distinction",
+      "Receiver advertised window (rwnd)",
+      "Congestion window (cwnd)",
+      "Slow Start and Congestion Avoidance (AIMD)",
+      "Fast Retransmit and Fast Recovery"
+    ],
+    "tags": ["transport_layer", "tcp", "flow_control", "congestion_control"]
+  },
+  {
+    "question_id": "CN003",
+    "subject": "CN",
+    "topic": "Network Layer",
+    "difficulty": "medium",
+    "question": "Compare Distance-Vector routing and Link-State routing algorithms, highlighting how they handle routing loops.",
+    "reference_answer": "Distance-Vector routing (e.g., RIP based on Bellman-Ford) shares a node's entire routing table only with its immediate direct neighbors periodically; routers lack a complete global topology view, making it susceptible to the 'Count-to-Infinity' routing loop problem (mitigated using Split Horizon, Poison Reverse, and Hold-down timers). In contrast, Link-State routing (e.g., OSPF based on Dijkstra's shortest path first algorithm) floods link-state advertisements (LSAs) containing the status and cost of local links to all routers in the autonomous system; each router independently constructs an identical global topological map (link-state database) and calculates loop-free shortest paths, converging much faster with no count-to-infinity problem.",
+    "key_concepts": [
+      "Bellman-Ford vs Dijkstra algorithm",
+      "Neighbor exchange vs global flooding (LSAs)",
+      "Count-to-infinity problem",
+      "Split Horizon and Poison Reverse",
+      "Link-State Database (LSDB) convergence"
+    ],
+    "tags": ["network_layer", "routing_algorithms", "ospf", "rip"]
+  },
+  {
+    "question_id": "CN004",
+    "subject": "CN",
+    "topic": "Application Layer",
+    "difficulty": "easy",
+    "question": "Explain the DNS resolution process when a user types a domain name into a browser.",
+    "reference_answer": "When a domain like 'example.com' is entered: 1. The browser checks local browser cache, OS resolver cache, and the hosts file. 2. If unresolved, a query is sent to the Recursive DNS Resolver (typically provided by the ISP or public DNS like 8.8.8.8). 3. The recursive resolver queries a Root Name Server ('.'), which redirects to the Top-Level Domain (TLD) Name Server ('.com'). 4. The resolver queries the '.com' TLD server, which returns the Authoritative Name Server for 'example.com'. 5. The resolver queries the Authoritative Name Server, which returns the IP address (A/AAAA record). 6. The recursive resolver caches the result according to TTL and returns the IP to the client browser.",
+    "key_concepts": [
+      "Recursive resolver vs iterative queries",
+      "Browser and OS local cache",
+      "Root DNS servers",
+      "Top-Level Domain (TLD) servers",
+      "Authoritative Name Servers",
+      "Time-To-Live (TTL)"
+    ],
+    "tags": ["application_layer", "dns", "networking_fundamentals"]
+  }
+]
