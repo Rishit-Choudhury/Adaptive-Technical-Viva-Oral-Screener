@@ -60,3 +60,6 @@ tmp/
 # Operating system
 .DS_Store
 Thumbs.db
+
+backend/venv
+backend/__pycache__
