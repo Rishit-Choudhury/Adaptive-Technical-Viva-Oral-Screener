@@ -15,6 +15,7 @@ from app.db.repositories.session_repository import SessionRepository
 from app.schemas.answer import AnswerSubmissionResponse, AudioAnswerResponse
 from app.schemas.question import DifficultyEnum, QuestionSafe, SubjectEnum
 from app.schemas.report import FinalReport
+from app.schemas.evaluation import EvaluationResult
 from app.schemas.session import (
     AnswerRecord,
     SessionCreate,
